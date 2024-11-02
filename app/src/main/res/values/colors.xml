@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- Primary Button Color (Blue) -->
+    <color name="primaryButtonColor">#3498db</color>
+
+    <!-- Secondary Button Color (Red) -->
+    <color name="secondaryButtonColor">#e74c3c</color>
+
+    <!-- White Color -->
+    <color name="white">#FFFFFF</color>
+
+    <!-- Background Gradient Colors (Optional) -->
+    <color name="gradientStartColor">#FF6B6B</color>  <!-- Light Red -->
+    <color name="gradientEndColor">#556270</color>    <!-- Dark Gray -->
+    <color name="black">#FF000000</color>
+    <color name="colorAccent">#FF4081</color>
+</resources>

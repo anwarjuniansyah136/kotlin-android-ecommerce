@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ecommerce</string>
+    <string name="search_products">Search products...</string>
+    <string name="title">VogueWalk</string>
+    <string name="login">Sign in</string>
+    <string name="register">Sign up</string>
+    <string name="desc">Discover the latest trends in fashion at Voguewalk!</string>
+</resources>

@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#CCCCCC"/> <!-- Warna abu-abu sebagai placeholder -->
+    <corners android:radius="8dp"/> <!-- Sudut melengkung untuk tampilan lebih baik -->
+</shape>

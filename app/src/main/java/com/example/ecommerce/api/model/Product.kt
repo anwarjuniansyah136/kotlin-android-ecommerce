@@ -6,5 +6,6 @@ data class Product (
     val productQuantity:Int,
     val productPrice:Int,
     val category:String,
+    val date:String,
     val image:String
 )

@@ -39,6 +39,10 @@ class ProductGudangActivity : AppCompatActivity() {
             onEditClick = { product ->
                 val intent = Intent(this, EditProductActivity::class.java)
                 intent.putExtra("product_id", product.id)
+                intent.putExtra("product_name",product.productName)
+                intent.putExtra("product_price",product.productPrice.toString())
+                intent.putExtra("product_quantity",product.productQuantity.toString())
+                intent.putExtra("category",product.category)
                 startActivity(intent)
             },
             onDeleteClick = { product ->
@@ -73,10 +77,6 @@ class ProductGudangActivity : AppCompatActivity() {
 
         swipeRefreshLayout.setOnRefreshListener { getData() }
         getData()
-    }
-
-    private fun gudangProductOnClick(product: Product){
-        Toast.makeText(applicationContext,product.productName,Toast.LENGTH_SHORT).show()
     }
 
     private fun getData(){

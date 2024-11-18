@@ -5,4 +5,11 @@
     <string name="login">Sign in</string>
     <string name="register">Sign up</string>
     <string name="desc">Discover the latest trends in fashion at Voguewalk!</string>
+    <string name="data_product">Data Product</string>
+    <string name="data_pesanan">Data Pesanan</string>
+    <string name="penerimaan_barang">Penerimaan Barang</string>
+    <string name="data_category">Data Category</string>
+    <string name="add_product">Add Product</string>
+    <string name="add_category">Add Category</string>
+    <string name="add_penerimaan_barang">Add Penerimaan Barang</string>
 </resources>

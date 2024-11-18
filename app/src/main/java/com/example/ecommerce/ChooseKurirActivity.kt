@@ -1,20 +1,14 @@
 package com.example.ecommerce
 
 import android.os.Bundle
-import android.se.omapi.Session
-import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.ecommerce.api.ApiClient
 import com.example.ecommerce.api.adapter.KurirAdapter
 import com.example.ecommerce.api.model.DeliveryRequest
-import com.example.ecommerce.api.model.Kurir
 import com.example.ecommerce.api.model.KurirResponse
 import com.example.ecommerce.api.model.PostResponse
 
@@ -36,11 +30,12 @@ class ChooseKurirActivity : AppCompatActivity() {
         setContentView(R.layout.activity_choose_kurir)
         swipeRefreshLayout = findViewById(R.id.refresh_layout)
         recyclerView = findViewById(R.id.recycler_view)
-        kurirAdapter = KurirAdapter { kurir -> productOnClick(kurir) }
+        val productId = intent.getStringExtra("product_id")
+        val sum = intent.getStringExtra("sum")
+        val checkOutId = intent.getStringExtra("checkout_id")
         kurirAdapter = KurirAdapter(
             onClick = { kurir ->
-                val productId = intent.getStringExtra("product_id")
-                val delivery = DeliveryRequest(productId.toString(),kurir.id)
+                val delivery = DeliveryRequest(productId.toString(),kurir.id,sum.toString().toInt())
                 ApiClient.init(this)
                 sessionManager = SessionManager(this)
                 val token = sessionManager.getAuthToken()
@@ -51,7 +46,22 @@ class ChooseKurirActivity : AppCompatActivity() {
                         response: Response<PostResponse>
                     ) {
                         if(response.isSuccessful){
-                            Toast.makeText(this@ChooseKurirActivity,"Success",Toast.LENGTH_SHORT).show()
+                            calls = ApiClient.checkOutService.delete("Bearer $token",checkOutId.toString())
+                            calls.enqueue(object : Callback<PostResponse>{
+                                override fun onResponse(
+                                    call: Call<PostResponse>,
+                                    response: Response<PostResponse>
+                                ) {
+                                    if(response.isSuccessful){
+                                        Toast.makeText(this@ChooseKurirActivity,"Pesanan Akan Dikirimkan",Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+
+                                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                                    TODO("Not yet implemented")
+                                }
+
+                            })
                         }
                     }
 
@@ -67,9 +77,6 @@ class ChooseKurirActivity : AppCompatActivity() {
             LinearLayoutManager.VERTICAL,false)
         swipeRefreshLayout.setOnRefreshListener { getData() }
         getData()
-    }
-    private fun productOnClick(kurir: Kurir) {
-        Toast.makeText(this, "Clicked: ${kurir.name}", Toast.LENGTH_SHORT).show()
     }
 
     private fun getData(){

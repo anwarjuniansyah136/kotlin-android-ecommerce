@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.ecommerce.api.ApiClient
 import com.example.ecommerce.api.model.LoginResponse
 import com.example.ecommerce.api.model.ProductRequest
@@ -36,11 +33,20 @@ class EditProductActivity : AppCompatActivity() {
         editCategory = findViewById(R.id.category)
         btnSubmit = findViewById(R.id.btn_edit)
         val id = intent.getStringExtra("product_id")
+        val prName = intent.getStringExtra("product_name")
+        val prPrice = intent.getStringExtra("product_price")
+        val prQuantity = intent.getStringExtra("product_quantity")
+        val cg = intent.getStringExtra("category")
+        editProductName.setText(prName.toString())
+        editProductPrice.setText(prPrice.toString())
+        editProductQuantity.setText(prQuantity.toString())
+        editCategory.setText(cg.toString())
         btnSubmit.setOnClickListener{
             val productName = editProductName.text
             val productPrice = editProductPrice.text
             val productQuantity = editProductQuantity.text
             val category = editCategory.text
+
             ApiClient.init(this)
             sessionManager = SessionManager(this)
             val token = sessionManager.getAuthToken()

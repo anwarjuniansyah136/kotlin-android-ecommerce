@@ -14,4 +14,10 @@
     <color name="gradientEndColor">#556270</color>    <!-- Dark Gray -->
     <color name="black">#FF000000</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="blue">#0D3550</color>
+    <color name="blues">#2196F3</color>
+    <color name="blue_dark">#1976D2</color>
+    <color name="lightBackground">#F5F5F5</color>
+    <color name="red">#FF3B30</color>
+    <color name="teal_200">#03DAC5</color>
 </resources>

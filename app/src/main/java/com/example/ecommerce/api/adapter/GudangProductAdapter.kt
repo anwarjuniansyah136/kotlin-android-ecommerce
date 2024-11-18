@@ -3,10 +3,12 @@ package com.example.ecommerce.api.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.ecommerce.R
 import com.example.ecommerce.api.model.Product
 
@@ -20,13 +22,15 @@ class GudangProductAdapter(
                                   private val onDeleteClick: (Product) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
 
-        private val id: TextView = itemView.findViewById(R.id.text_id)
+//        private val id: TextView = itemView.findViewById(R.id.text_id)
         private val productName: TextView = itemView.findViewById(R.id.product_name)
         private val productQuantity: TextView = itemView.findViewById(R.id.product_quantity)
         private val productPrice: TextView = itemView.findViewById(R.id.product_price)
         private val category: TextView = itemView.findViewById(R.id.category)
         private val btnEdit: View = itemView.findViewById(R.id.btn_edit)
         private val btnDelete: View = itemView.findViewById(R.id.btn_dlt)
+        private val thumbnail: ImageView = itemView.findViewById(R.id.thumbnail)
+        private val BASE_URL = "http://10.0.2.2:8080/product/photos/"
 
         private var currentProduct: Product? = null
 
@@ -45,11 +49,16 @@ class GudangProductAdapter(
 
         fun bind(product: Product) {
             currentProduct = product
-            id.text = product.id
+//            id.text = product.id
             productName.text = product.productName
             productQuantity.text = product.productQuantity.toString()
             productPrice.text = product.productPrice.toString()
             category.text = product.category
+            val imageUrl = BASE_URL + product.image
+            Glide.with(itemView)
+                .load(imageUrl)
+                .centerCrop()
+                .into(thumbnail)
         }
     }
 

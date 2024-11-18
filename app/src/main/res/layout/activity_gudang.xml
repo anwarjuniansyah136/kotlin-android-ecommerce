@@ -1,52 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/lightBackground"
     tools:context=".GudangActivity">
 
-    <Button
-        android:id="@+id/btn_pnrm"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Penerimaan Barang"/>
-    <Button
-        android:id="@+id/btn_product"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btn_pnrm"
-        android:text="Data Product"/>
-    <Button
-        android:id="@+id/btn_pesan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Data Pesanan"
-        app:layout_constraintTop_toBottomOf="@+id/btn_product"/>
-    <Button
-        android:id="@+id/btn_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btn_pesan"
-        android:text="Data Category"/>
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Product"
-        app:layout_constraintTop_toBottomOf="@+id/btn_category"/>
-    <Button
-        android:id="@+id/btn_add_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add"
-        android:text="Add Category"/>
-    <Button
-        android:id="@+id/btn_add_supply"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_category"
-        android:text="Add Penerimaan Barang"/>
+        android:text="Gudang"
+        android:textSize="20sp"
+        android:textColor="@color/blue"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        android:layout_marginBottom="16dp"/>
 
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:columnCount="2"
+        android:rowCount="4"
+        app:layout_constraintTop_toBottomOf="@+id/header_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="8dp"
+        android:clipToPadding="false"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/btn_pnrm"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:padding="12dp"
+            android:text="@string/penerimaan_barang"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"
+            android:background="@drawable/custom_button"/>
+
+        <Button
+            android:id="@+id/btn_product"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:padding="12dp"
+            android:text="@string/data_product"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"
+            android:background="@drawable/custom_button"/>
+
+        <Button
+            android:id="@+id/btn_pesan"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:padding="12dp"
+            android:text="@string/data_pesanan"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"
+            android:background="@drawable/custom_button"/>
+
+        <Button
+            android:id="@+id/btn_category"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:padding="12dp"
+            android:text="@string/data_category"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"
+            android:background="@drawable/custom_button"/>
+
+        <Button
+            android:id="@+id/btn_add"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:padding="12dp"
+            android:text="@string/add_product"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"
+            android:background="@drawable/custom_button"/>
+
+        <Button
+            android:id="@+id/btn_add_category"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:padding="12dp"
+            android:text="@string/add_category"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"
+            android:background="@drawable/custom_button"/>
+
+        <Button
+            android:id="@+id/btn_add_supply"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:padding="12dp"
+            android:text="@string/add_penerimaan_barang"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"
+            android:background="@drawable/custom_button"/>
+    </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

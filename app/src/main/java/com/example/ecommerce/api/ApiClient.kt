@@ -3,6 +3,7 @@ package com.example.ecommerce.api
 import android.content.Context
 import com.example.ecommerce.api.service.CartService
 import com.example.ecommerce.api.service.CategoryService
+import com.example.ecommerce.api.service.CheckOutService
 import com.example.ecommerce.api.service.KurirService
 import com.example.ecommerce.api.service.LoginService
 import com.example.ecommerce.api.service.ProductService
@@ -79,6 +80,10 @@ object ApiClient {
 
     val kurirService:KurirService by lazy {
         authRetrofit.create(KurirService::class.java)
+    }
+
+    val checkOutService:CheckOutService by lazy {
+        authRetrofit.create(CheckOutService::class.java)
     }
 }
 

@@ -59,6 +59,8 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(Intent(this@LoginActivity,GudangActivity::class.java))
                     }else if(loginResponse.data.role == "sender"){
                         startActivity(Intent(this@LoginActivity,KurirActivity::class.java))
+                    }else if(loginResponse.data.role == "admin"){
+                        startActivity(Intent(this@LoginActivity,AdminActivity::class.java))
                     }
                 }else{
                     Toast.makeText(this@LoginActivity,"Username atau Password anda salah",

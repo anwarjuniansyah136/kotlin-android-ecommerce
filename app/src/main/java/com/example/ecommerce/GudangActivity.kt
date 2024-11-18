@@ -2,6 +2,7 @@ package com.example.ecommerce
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -48,5 +49,17 @@ class GudangActivity : AppCompatActivity() {
         btnAddSupply.setOnClickListener{
             startActivity(Intent(this,AddSupply::class.java))
         }
+        val buttons = listOf(btnPenerima, btnProduct, btnPesanan, btnCategory, btnAdd, btnAdd, btnAddSupply)
+
+        for (button in buttons) {
+            button.setOnTouchListener { v, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(150).start()
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> v.animate().scaleX(1f).scaleY(1f).setDuration(150).start()
+                }
+                false
+            }
+        }
+
     }
 }

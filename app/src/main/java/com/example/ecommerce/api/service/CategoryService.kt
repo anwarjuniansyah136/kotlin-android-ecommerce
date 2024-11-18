@@ -14,11 +14,23 @@ import retrofit2.http.Query
 
 interface CategoryService {
     @GET("/category/get")
-    fun getAll(@Header("Authorization") token:String):Call<CategoryResponse>
+    fun getAll(@Header("Authorization") token:String)
+    :Call<CategoryResponse>
+
     @POST("/category/post")
-    fun postCategory(@Header("Authorization") token: String,@Body request:CategoryRequest):Call<LoginResponse>
+    fun postCategory(@Header("Authorization") token: String,
+                     @Body request:CategoryRequest)
+    :Call<LoginResponse>
+
     @DELETE("/category/delete")
-    fun deleteProduct(@Header("Authorization") token: String,@Query("id") param : String):Call<LoginResponse>
+    fun deleteProduct(@Header("Authorization") token: String,
+                      @Query("id") param : String)
+    :Call<LoginResponse>
+
     @PUT("/category/put")
-    fun updateCategory(@Header("Authorization") token: String,@Query("id") param: String,@Body request: CategoryRequest):Call<LoginResponse>
+    fun updateCategory(@Header("Authorization") token: String,
+                       @Query("id") param: String,
+                       @Body request: CategoryRequest)
+    :Call<LoginResponse>
+
 }

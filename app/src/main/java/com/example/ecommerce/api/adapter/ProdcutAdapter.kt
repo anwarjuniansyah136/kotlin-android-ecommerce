@@ -22,6 +22,7 @@ class ProductAdapter(private val onClick:(Product)->Unit) :
         private val title : TextView = itemView.findViewById(R.id.title)
         private val brand : TextView = itemView.findViewById(R.id.brand)
         private val price : TextView = itemView.findViewById(R.id.price)
+        private val BASE_URL = "http://10.0.2.2:8080/product/photos/"
         private var currentProduct : Product? = null
 
         init {
@@ -35,7 +36,6 @@ class ProductAdapter(private val onClick:(Product)->Unit) :
                     intent.putExtra("product_category", product.category)
                     intent.putExtra("product_image", product.image)
                     itemView.context.startActivity(intent)
-                    itemView.context.startActivity(intent)
                 }
             }
         }
@@ -45,9 +45,12 @@ class ProductAdapter(private val onClick:(Product)->Unit) :
 
             title.text = product.productName
             brand.text = product.category
-            price.text = product.productPrice.toString()
-
-            Glide.with(itemView).load(product.image).centerCrop().into(thumbnail)
+            price.text = "Rp ${product.productPrice}"
+            val imageUrl = BASE_URL + product.image
+            Glide.with(itemView)
+                .load(imageUrl)
+                .centerCrop()
+                .into(thumbnail)
         }
     }
 

@@ -14,6 +14,7 @@ import com.example.ecommerce.api.ApiClient
 import com.example.ecommerce.api.adapter.PesananAdapter
 import com.example.ecommerce.api.model.Cart
 import com.example.ecommerce.api.model.CartResponse
+import com.example.ecommerce.api.model.CheckOutResponse
 import com.example.ecommerce.api.util.SessionManager
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,9 +33,11 @@ class PesananActivity : AppCompatActivity() {
         swipeRefreshLayout = findViewById(R.id.refresh_layout)
         recyclerView = findViewById(R.id.recycler_view)
 
-        pesananAdapter = PesananAdapter(onClick = { cart ->
+        pesananAdapter = PesananAdapter(onClick = { checkout ->
             val intent = Intent(this, ChooseKurirActivity::class.java)
-            intent.putExtra("product_id", cart.product.id)
+            intent.putExtra("product_id", checkout.productId)
+            intent.putExtra("sum",checkout.sum.toString())
+            intent.putExtra("checkout_id",checkout.id)
             startActivity(intent)
         })
 
@@ -52,21 +55,19 @@ class PesananActivity : AppCompatActivity() {
         val token = sessionManager.getAuthToken()
 
         ApiClient.init(this)
-        val call = ApiClient.cartService.getAll("Bearer $token")
-
-        call.enqueue(object : Callback<CartResponse> {
-            override fun onResponse(call: Call<CartResponse>, response: Response<CartResponse>) {
+        val call = ApiClient.checkOutService.getAll("Bearer $token")
+        call.enqueue(object : Callback<CheckOutResponse> {
+            override fun onResponse(call: Call<CheckOutResponse>, response: Response<CheckOutResponse>) {
                 swipeRefreshLayout.isRefreshing = false
                 if (response.isSuccessful) {
-                    val cartList = response.body()?.data ?: emptyList()
-                    Toast.makeText(this@PesananActivity, "Data loaded: ${cartList.size} items", Toast.LENGTH_SHORT).show()
-                    pesananAdapter.submitList(cartList)
+                    val checkoutList = response.body()?.data ?: emptyList()
+                    pesananAdapter.submitList(checkoutList)
                 } else {
                     Toast.makeText(this@PesananActivity, "Failed to load data", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onFailure(call: Call<CartResponse>, t: Throwable) {
+            override fun onFailure(call: Call<CheckOutResponse>, t: Throwable) {
                 swipeRefreshLayout.isRefreshing = false
                 Toast.makeText(this@PesananActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }

@@ -13,61 +13,79 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="16dp">
-        <TextView
-            android:id="@+id/text_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ID: 001"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:paddingBottom="4dp"/>
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/image_placeholder"/>
 
-        <TextView
-            android:id="@+id/product_name"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Product Name: Sneakers"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:paddingBottom="4dp"/>
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/product_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Price: $100"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:paddingBottom="4dp"/>
 
-        <TextView
-            android:id="@+id/product_quantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Quantity: 2"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:paddingBottom="4dp"/>
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product Name: Sneakers"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:paddingBottom="4dp"/>
 
-        <TextView
-            android:id="@+id/category"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price: $100"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:paddingBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/product_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantity: 2"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:paddingBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category: Shoes"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:paddingBottom="4dp"/>
+        </LinearLayout>
+
+        <!-- Bagian Tombol Edit dan Delete -->
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Category: Shoes"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:paddingBottom="4dp"/>
-        <Button
-            android:id="@+id/btn_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Edit"/>
-        <Button
-            android:id="@+id/btn_dlt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete"/>
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/btn_dlt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"/>
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

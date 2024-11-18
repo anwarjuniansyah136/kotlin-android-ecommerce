@@ -7,7 +7,7 @@
     android:layout_margin="8dp"
     app:cardBackgroundColor="@color/white"
     app:cardElevation="8dp"
-    app:cardCornerRadius="12dp"
+    app:cardCornerRadius="16dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -15,32 +15,60 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
+
+        <!-- TextView for ID with slight style improvements -->
         <TextView
             android:id="@+id/text_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ID: 001"
-            android:textSize="16sp"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:textColor="@android:color/black"
             android:paddingBottom="4dp"/>
 
+        <!-- TextView for Category with slight style improvements -->
         <TextView
             android:id="@+id/category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Category: Shoes"
-            android:textSize="16sp"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:paddingBottom="4dp"/>
-        <Button
-            android:id="@+id/btn_edit"
+            android:paddingBottom="16dp"/>
+
+        <!-- Horizontal layout for buttons to make them side-by-side -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit"/>
-        <Button
-            android:id="@+id/btn_dlt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete"/>
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <!-- Edit Button with icon and custom background -->
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Edit"
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_edit"
+                android:drawablePadding="8dp"
+                android:backgroundTint="@color/blue"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btn_dlt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Delete"
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_delete"
+                android:drawablePadding="8dp"
+                android:backgroundTint="@color/red"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

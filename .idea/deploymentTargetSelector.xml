@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-10-29T06:12:37.366906800Z">
+        <DropdownSelection timestamp="2024-11-08T07:45:05.424291700Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\MyBook Hype AMD\.android\avd\Pixel_3_XL_API_28.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\MyBook Hype AMD\.android\avd\Pixel_7_Pro_API_35.avd" />
             </handle>
           </Target>
         </DropdownSelection>

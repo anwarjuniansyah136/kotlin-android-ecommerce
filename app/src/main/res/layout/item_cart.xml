@@ -5,51 +5,71 @@
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@android:color/white"
     app:cardElevation="8dp"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="12dp"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-    android:padding="16dp">
+        android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/thumbnail"
-        android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:scaleType="centerCrop"
-    android:layout_marginBottom="12dp"
-    android:background="@drawable/image_placeholder" /> <!-- Content description for accessibility -->
+        <!-- Thumbnail Image -->
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/image_placeholder"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="Thumbnail Image" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Title"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="18sp"
-        android:ellipsize="end"
-        android:maxLines="1" /> <!-- Limit to one line -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintTop_toTopOf="@id/thumbnail"
+            app:layout_constraintStart_toEndOf="@id/thumbnail"
+            app:layout_constraintEnd_toStartOf="@id/checkout"
+            android:layout_marginStart="8dp" />
 
-    <TextView
-        android:id="@+id/brand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Brand"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp" /> <!-- Adjusted size for brand text -->
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_green_dark"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="@id/title" />
 
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Price"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/holo_green_dark" /> <!-- Changed price color for emphasis -->
+        <!-- Checkout Button -->
+        <Button
+            android:id="@+id/checkout"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Buy"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toTopOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
-    </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/checkout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

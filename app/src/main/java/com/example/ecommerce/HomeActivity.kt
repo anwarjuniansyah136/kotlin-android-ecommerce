@@ -17,6 +17,7 @@ import com.example.ecommerce.api.adapter.ProductAdapter
 import com.example.ecommerce.api.model.Product
 import com.example.ecommerce.api.model.ProductResponse
 import com.example.ecommerce.api.util.SessionManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +30,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var cartIcon: ImageView
     private lateinit var searchInput: EditText
     private lateinit var progressBar: ProgressBar
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     private var fullProductList: List<Product> = listOf()
 
@@ -37,25 +39,22 @@ class HomeActivity : AppCompatActivity() {
         ApiClient.init(this)
         setContentView(R.layout.activity_home)
 
-        // Initialize UI Components
         recyclerView = findViewById(R.id.recycler_view)
         cartIcon = findViewById(R.id.cart_icon)
         searchInput = findViewById(R.id.search_input)
         progressBar = findViewById(R.id.progress_bar)
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
 
-        // Initialize RecyclerView and Adapter
         productAdapter = ProductAdapter { product -> productOnClick(product) }
         recyclerView.apply {
             adapter = productAdapter
             layoutManager = GridLayoutManager(this@HomeActivity, 2)
         }
 
-        // Setup cart icon click listener
         cartIcon.setOnClickListener {
             startActivity(Intent(this, CartActivity::class.java))
         }
 
-        // Setup search input with TextWatcher
         searchInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -65,8 +64,23 @@ class HomeActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {}
         })
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.nav_home->{
+                    true
+                }
+                R.id.nav_new_products->{
+                    startActivity(Intent(this,NewProductActivity::class.java))
+                    true
+                }
+                R.id.nav_profile -> {
+                    startActivity(Intent(this,ProfilAcivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
 
-        // Fetch data from API
         getData()
     }
 
